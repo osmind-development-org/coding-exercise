@@ -7,8 +7,6 @@ Prompts align with:
 - Part 1 — [Clinical Coding Assistant (Phase 1)](https://www.notion.so/osmind/Senior-Engineer-Coding-Exercise-Part-1-Candidate-View-35f5e7a3097880559a85ed585c730cff)
 - Part 2 & 3 — [Transcript parsing & uncertainty](https://www.notion.so/osmind/Senior-Engineer-Coding-Exercise-Part-2-Candidate-View-35f5e7a3097880f9b50cc75f78bd8612)
 
-This repository should contain **only** the coding exercise starter (no alternate exercises).
-
 ## Project layout
 
 | File | Purpose |
