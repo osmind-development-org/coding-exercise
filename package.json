@@ -10,7 +10,10 @@
   },
   "scripts": {
     "build": "tsc",
-    "test": "vitest run"
+    "test": "vitest run",
+    "test:phase1": "vitest run src/phase1.test.ts",
+    "test:phase2": "vitest run src/phase2.test.ts",
+    "test:phase3": "vitest run src/phase3.test.ts"
   },
   "dependencies": {
     "dotenv": "^17.3.1",

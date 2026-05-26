@@ -16,6 +16,10 @@ Doctor: Alright, we'll plan to follow up in a month.
 [Visit duration: 30 minutes. No therapy performed.]`;
 
   const record = await parseTranscript(transcript);
+  expect(record.hadMedicationReview).toBe(true);
+  expect(record.hadTherapy).toBe(false);
+  expect(record.visitType).toBe('office');
+  expect(record.therapyMinutes).toBeNull();
   expect(suggestCodes(record)).toEqual(['99213']);
 });
 
@@ -28,5 +32,29 @@ Therapist: Good. Let's work through some more CBT techniques today.
 [Visit duration: 60 minutes. No medication review performed.]`;
 
   const record = await parseTranscript(transcript);
+  expect(record.hadMedicationReview).toBe(false);
+  expect(record.hadTherapy).toBe(true);
+  expect(record.visitType).toBe('telemedicine');
+  expect(record.therapyMinutes).toBe(60);
   expect(suggestCodes(record)).toEqual(['90837']);
+});
+
+test('Combined office visit + therapy transcript → 99214, +90833', async () => {
+  const transcript = `Doctor: Good to see you again. Let's start with your medications —
+  the Lamictal increase seems to be working, but I'm concerned about
+  the side effects you mentioned. Let's adjust the dosage slightly.
+  I also want to check in on the mood tracking we discussed.
+Patient: The mood has been up and down. Work stress is a big trigger.
+Doctor: Let's spend some time on that. I'd like to work through
+  some strategies for managing the work stress — we'll use some
+  of the CBT techniques we've talked about before.
+[Visit duration: 60 minutes. 25 minutes on medication review
+and clinical assessment, 35 minutes of therapy.]`;
+
+  const record = await parseTranscript(transcript);
+  expect(record.hadMedicationReview).toBe(true);
+  expect(record.hadTherapy).toBe(true);
+  expect(record.visitType).toBe('office');
+  expect(record.therapyMinutes).toBe(35);
+  expect(suggestCodes(record)).toEqual(['99214', '+90833']);
 });

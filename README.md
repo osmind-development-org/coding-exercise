@@ -5,7 +5,8 @@ Scaffolding for the Senior Software Engineer (IPD) live coding exercise: an assi
 Prompts align with:
 
 - Part 1 — [Clinical Coding Assistant (Phase 1)](https://www.notion.so/osmind/Senior-Engineer-Coding-Exercise-Part-1-Candidate-View-35f5e7a3097880559a85ed585c730cff)
-- Part 2 & 3 — [Transcript parsing & uncertainty](https://www.notion.so/osmind/Senior-Engineer-Coding-Exercise-Part-2-Candidate-View-35f5e7a3097880f9b50cc75f78bd8612)
+- Part 2 — [Transcript parsing (Phase 2)](https://www.notion.so/osmind/Senior-Engineer-Coding-Exercise-Part-2-Candidate-View-35f5e7a3097880f9b50cc75f78bd8612)
+- Part 3 — [Handling uncertainty (Phase 3)](https://www.notion.so/osmind/Senior-Engineer-Coding-Exercise-Part-3-Candidate-View-36c5e7a3097881148caac83ce340a265)
 
 ## Project layout
 
@@ -40,6 +41,16 @@ cp .env.example .env
 
 ## Run tests
 
+All phases:
+
 ```bash
 npm run test
+```
+
+Individual phases:
+
+```bash
+npm run test:phase1
+npm run test:phase2
+npm run test:phase3
 ```
